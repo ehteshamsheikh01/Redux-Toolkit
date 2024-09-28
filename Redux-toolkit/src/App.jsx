@@ -65,7 +65,7 @@
 
 import React, { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addTodo, removeTodo } from './Config/redux/reducers/todoSlice'
+import { addTodo, removeTodo , editTodo } from './Config/redux/reducers/todoSlice'
 
 const App = () => {
 
@@ -97,6 +97,14 @@ const deletebtn = (index)=>{
 }
 
 
+const editbtn = (index)=>{
+  const newvalue = prompt('enter new value')
+  dispatch(editTodo({
+    title:newvalue,
+    index
+  }))
+}
+
   
 
   return (
@@ -113,6 +121,7 @@ const deletebtn = (index)=>{
       return  <li key={item.id}>
     {item.title}
     <button onClick={()=>deletebtn(index)}>Delete</button>
+    <button onClick={()=>editbtn(index)}>updatValue</button>
       </li>
     }): <h1>loading...</h1> }
     </ul>

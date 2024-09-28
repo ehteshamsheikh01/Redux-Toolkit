@@ -47,11 +47,15 @@ export  const todoSlice = createSlice({
         },
         removeTodo: (state , action)=>{
             state.todo.splice(action.payload.index , 1)
+        },
+        editTodo:(state , action) =>{
+            const { title , index } = action.payload
+            state.todo[index].title = title
         }
     }
 })
 
-export const { addTodo , removeTodo } = todoSlice.actions
+export const { addTodo , removeTodo  , editTodo} = todoSlice.actions
 export default todoSlice.reducer
                     
 
